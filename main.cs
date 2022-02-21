@@ -16,7 +16,7 @@ class Campeonato {
 class Time {
   private string nome;
   
-  public Inserir(){
+  public void Inserir(){
     Jogador[] j1 = new Jogador[]
       
   }
