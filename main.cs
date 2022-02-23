@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 class Program {
   public static void Main() {
     Campeonato c = new Campeonato("Champions League");
     Time t = new Time("PSG");
     Jogador j1 = new Jogador("Neymar",10,"neymar123@psgmail.com");
     j1.SetCamisa(10);
+    Time.Inserir(obj);
     Console.WriteLine(Jogador.j1);
     }
 }
@@ -15,20 +17,22 @@ class Campeonato {
   
 class Time {
   private string nome;
-  
-  public void Inserir(){
-    Jogador[] j1 = new Jogador[]
-      
+  private static List<Jogador> jogs = new List<Jogador>();
+  public void Inserir(Jogador obj){
+    /* inserir um jogador no time*/
+    jogs.Add(obj);
   }
-  public Listar(){
-    
+  public void Listar(){
+    foreach(Jogador obj in jogs){
+      return obj;
+    }
+  }
+  /*public Atualizar(){
+    Jogador aux = Listar()
   }
   public Remover(){
     
-  }
-  public Atualizar(){
-    
-  }
+  }*/
 }
 
 class Jogador {
@@ -40,7 +44,7 @@ class Jogador {
     this.camisa = camisa;
     this.email = email;
   }
-  public void int SetCamisa(int camisa){
+  public void SetCamisa(int camisa){
     if(camisa > 0) this.camisa = camisa;
   }
   public string GetNome(){
@@ -53,6 +57,6 @@ class Jogador {
     return email;
   }
   public override string ToString(){
-    $"{nome} , {camisa} , {email}"
+    $"{nome} , {camisa} , {email}";
   }
 }
