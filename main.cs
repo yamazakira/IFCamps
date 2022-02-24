@@ -1,14 +1,43 @@
 using System;
 using System.Collections.Generic;
-class Program {
-  public static void Main() {
-    Campeonato c = new Campeonato("Champions League");
-    Time t = new Time("PSG");
-    Jogador j1 = new Jogador("Neymar",10,"neymar123@psgmail.com");
-    j1.SetCamisa(10);
-    Time.Inserir(obj);
-    Console.WriteLine(Jogador.j1);
-    }
+using System; 
+
+public class Program {
+
+  public static void Main(string[] args) {
+    Console.WriteLine("Bem vindo!");
+    Console.WriteLine("----- Escolha um nome para seu campeonato: -----");
+    Campeonato camp = new Campeonato(Console.ReadLine());
+    Console.WriteLine($"Você criou o campeonato '{camp.getNameCamp()}'!");
+    Console.WriteLine();
+    int op = 0;
+
+    do {
+      op = Menu();
+      switch(op){
+        case 1: inserirTime(); break;
+        case 2: listarTime(); break;
+      }
+    } while (op != 0);
+  }
+
+  public static int Menu(){
+    Console.WriteLine("-------------- Escolha uma opção ---------------");
+    Console.WriteLine("01 - Inserir time");
+    Console.WriteLine("02 - Listar times");
+    Console.WriteLine("00 - Finalizar o sistema");
+    Console.WriteLine("------------------------------------------------");
+    Console.Write("Opção: ");
+    int op = int.Parse(Console.ReadLine());
+    Console.WriteLine();
+    return op;
+  }
+  public static void menuinserirTime() {
+    // MENU PARA INSERIR TIMES
+  }
+  public static void menulistarTime() {
+    // MENU PARA LISTAR OS TIMES
+  }
 }
 
 class Campeonato {
