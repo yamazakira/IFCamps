@@ -42,6 +42,27 @@ public class Program {
 
 class Campeonato {
   private string nome;
+  private static Time[] times = new Time[8];
+  private int numTimes = 0;
+
+  public Campeonato(string n){
+    this.nome = n;
+    this.numTimes+=1;
+  }
+  public void setNameCamp(string n) {
+    this.nome = n;
+  }
+
+  public string getNameCamp() {
+    return this.nome;
+  }
+
+  public static void inserirTime() {
+    // ADICIONA UM TIME NO CAMPEONATO
+  }
+  public static void listarTime() {
+    // LISTA OS TIMES
+  }
 }
   
 class Time {
