@@ -2,34 +2,26 @@ using System;
 using System.Collections.Generic;
 
 class Time {
+  private int id;
   private string nome;
-  private static List<Jogador> jogs = new List<Jogador>();
-
-  public Time(string n){
-    this.nome = n;
+  //private static List<Jogador> jogs = new List<Jogador>();//
+  public Time(int id , string nome){
+    this.id = id;
+    this.nome = nome;
   }
-
-  /*
-  public void Inserir(Jogador obj){
-    // inserir um jogador no time
-    jogs.Add(obj);
+  public void setNomeTime(string nome){
+    this.nome = nome;
   }
-
-  public void Listar(){
-    foreach(Jogador obj in jogs){
-      return obj;
-    }
-  */
-
-  public void setNomeTime(string n){
-    this.nome = n;
-  }
-
   public string getNomeTime(){
     return this.nome;
   }
-
+  public void setId(int id){
+    this.id = id;
+  }
+  public int getId(){
+    return this.id;
+  }
   public override string ToString(){
-    return $"{nome}";
+    return $"{id} - {nome}";
   }
 }
