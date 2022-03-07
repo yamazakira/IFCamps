@@ -5,15 +5,23 @@ class Jogador {
   private string nome;
   private int camisa;
   private string email;
-  private string time;
-  
-  public Jogador (string nome, int camisa , string email, string time){
+  private string Idtime;
+  public Jogador(int id){
+    this.id = id;
+  }
+  public Jogador (int IdJog , string nome, int camisa , string email, int IdTime){
+    this.IdJog = IdJog;
     this.nome = nome;
     this.camisa = camisa;
     this.email = email;
-    this.time = time;
+    this.Idtime = Idtime;
   }
-
+  public void setIdJog(int id){
+    this.id = id;
+  }
+  public int getIdJog(){
+    return this.id;
+  }
   public void SetCamisa(int camisa){
     if(camisa > 0) this.camisa = camisa;
   }
@@ -26,8 +34,8 @@ class Jogador {
   public string GetEmail(){
     return email;
   }
-  public string GetTime(){
-    return time;
+  public int getIdTime(){
+    return Idtime;
   }
   public override string ToString(){
     return $"{nome} - {camisa} - {email} - {time}";

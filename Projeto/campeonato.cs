@@ -2,19 +2,21 @@ using System;
 using System.Collections.Generic;
 class Campeonato {
   private static Time[] times = new Time[8];
+  private static List<Jogador> jogs = new List<Jogador>();
   private string nome;
   private static int numTimes;
-  private static List<Jogador> jogs = new List<Jogador>();
-  public Campeonato(string n){
-    this.nome = n;
-    numTimes+=1;
+  public Campeonato(string nome){
+    this.nome = nome;
   }
-  public void setNameCamp(string n) {
-    this.nome = n;
+  public void setNameCamp(string nome) {
+    this.nome = nome;
   }
   public string getNameCamp() {
     return this.nome;
   }
+
+// PARTE DOS TIMES //
+  
   // Adiciona um time ao campeonato //
   public static void inserirTime(Time obj) {
     if (numTimes == times.Length)
@@ -52,40 +54,52 @@ class Campeonato {
       for(int i = aux ; i < numTimes - 1 ; i++)
         times[i] = times[i + 1];
       numTimes--;
+      Console.WriteLine("Time excluído com sucesso!");
+    }
+    if(aux == -1){
+      Console.WriteLine("Ops! O time citado não existe");
     }
   }
   public static int indiceTime(int id){
     for (int i = 0; i < numTimes ; i++){
       Time obj = times[i];
-      if(obj.getId() == id) return id;
-    } 
-    return -1;
+      if(obj.getId() == id) return i; 
+    }
+    return -1 ; 
   }
-  //exclui um jogador//
-  public static void excluirJogador() {
-    
-  }
-}
-  //  Inserir um jogador //
+
+// PARTE DOS JOGADORES // 
+  
+  //  Insere um jogador  //
   public static void inserirJogador(Jogador obj) {
     // Insere objeto na lista
     jogs.Add(obj);
   }
-    // Atualiza um jogador //
-  public static void atualizarJogador() {
-    
-  }
-  public static List<Jogador> listarJogador() {
-    // Retorna todos os objetos cadastrados
-    return jogs;
-  }
-  //Retorna os objetos cadastrados por time // 
-  public static void listarJogador(string time) {
 
+  // Lista os jogadores cadastrados por time //
+  public static void listarJogador(string time) {
     foreach(Jogador obj in jogs) {   
-      if (obj.GetTime() == time) Console.WriteLine(obj);    
+      if (obj.getTime() == time) Console.WriteLine(obj);    
     }
   }
-
-
-// Salve luís, aceita o negócio lá no github e dá commit aí pro teu nome ficar salvo no projeto, segundo botão da esquerda.
+  // Lista todos os jogadores cadastrados no campeonato // 
+  public static List<Jogador> listarJogador() {
+    // retorna todos os objetos da lista //
+    return jogs;
+  }
+  // Atualiza um jogador //
+  public static void atualizarJogador(Jogador obj) {
+    Jogador aux = listarJogador(obj.getIdJog());
+    if(aux != null){
+      aux.SetNome(obj.GetNome());
+      aux.SetCamisa(obj.GetCamisa())
+      aux.Setemail(obj.Getemail())
+      aux.SetIdTime(obj.GetIdTime())
+      }
+  }  
+  //exclui um jogador//
+  public static void excluirJogador(Jogador obj) {
+    Pet aux = listarJogador(obj.getIdJog());
+    if(aux != null) jogs.Remove(aux);
+  }
+}
