@@ -45,36 +45,47 @@ class Campeonato {
       aux.setNomeTime(obj.getNomeTime());
     }
   }
-
   // Remove um time do campeonato //
-  public static void excluirTime() {
-    
-  }
-  
-  public static void inserirJogador(Jogador obj) {
-    // Insere objeto na lista
-    jogs.Add(obj);
-  }
-  
-  public static List<Jogador> listarJogador() {
-    // Retorna todos os objetos cadastrados
-    return jogs;
-  }
-
-  public static void listarJogador(string time) {
-    // Retorna os objetos cadastrados por time
-    foreach(Jogador obj in jogs) {   
-      if (obj.GetTime() == time) Console.WriteLine(obj);    
+  public static void excluirTime(Time obj) {
+    int aux = indiceTime(obj.getId());
+    if(aux != -1){
+      for(int i = aux ; i < numTimes - 1 ; i++)
+        times[i] = times[i + 1];
+      numTimes--;
     }
   }
-  
-  public static void atualizarJogador() {
-    
+  public static int indiceTime(int id){
+    for (int i = 0; i < numTimes ; i++){
+      Time obj = times[i];
+      if(obj.getId() == id) return id;
+    } 
+    return -1;
   }
-  
+  //exclui um jogador//
   public static void excluirJogador() {
     
   }
 }
+  //  Inserir um jogador //
+  public static void inserirJogador(Jogador obj) {
+    // Insere objeto na lista
+    jogs.Add(obj);
+  }
+    // Atualiza um jogador //
+  public static void atualizarJogador() {
+    
+  }
+  public static List<Jogador> listarJogador() {
+    // Retorna todos os objetos cadastrados
+    return jogs;
+  }
+  //Retorna os objetos cadastrados por time // 
+  public static void listarJogador(string time) {
+
+    foreach(Jogador obj in jogs) {   
+      if (obj.GetTime() == time) Console.WriteLine(obj);    
+    }
+  }
+
 
 // Salve luís, aceita o negócio lá no github e dá commit aí pro teu nome ficar salvo no projeto, segundo botão da esquerda.

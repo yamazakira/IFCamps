@@ -22,6 +22,8 @@ class Program {
           case 5: menuinserirJogador(); break;
           case 6: menulistarJogador(); break;
           case 7: menulistarJogTime(); break;
+          case 8: menuatualizarJogadores(); break;
+          case 9: menuexcluirJogadores(); break;
         }
       }
       catch(Exception erro){
@@ -38,10 +40,12 @@ class Program {
     Console.WriteLine("01 Inserir time");
     Console.WriteLine("02 Listar times");
     Console.WriteLine("03 Atualizar um time");
-    Console.WriteLine("04 Excluir um time");
+    Console.WriteLine("04 Excluir um time e/ou jogadores");
     Console.WriteLine("05 Inserir um jogador");
     Console.WriteLine("06 Listar todos os jogadores");
     Console.WriteLine("07 Listar jogadores por time");
+    Console.WriteLine("08 Atualizar jogadores");
+    Console.WriteLine("09 Excluir jogadores");
     Console.WriteLine("00 Finalizar o sistema");
     Console.WriteLine("------------------------------------------------");
     Console.Write("Opção: ");
@@ -72,8 +76,6 @@ class Program {
       Campeonato.inserirTime(obj); 
     }
   }
-    // A FAZER: CRIAR UMA LISTA AQUI COM OS JOGADORES, ATRIBUIR ESSA LISTA À LISTA NA CLASSE 'TIME' E FAZER COM QUE O CONSTRUTOR TENHA UM PARAMETRO PRA LISTA.//
-    
   //Listar os times do campeonato//
   public static void menulistarTime() {
     Console.WriteLine("---------------- Listar times ------------------");  
@@ -94,19 +96,29 @@ class Program {
     Console.WriteLine("Time atualizado com sucesso!");
     Console.WriteLine("------------------------------------------------");
     Console.WriteLine();
-    //A FAZER: COLOCAR OUTRAS OPÇÕES DE ATUALIZAÇÃO EX: 01 - ATUALIZAR O NOME , 02 -INSERIR NOVOS JOGADORES , 03-TROCAR O NUMERO DA CAMISA , 04-TROCAR O EMAIL // 
   }
   //Excluir algum time do campeonato//
-  public static void menuexcluirTime(){}
-  //A FAZER: CRIAR UMA FUNÇÃO PRA EXCLUIR JOGADORES//
+  public static void menuexcluirTime(){
+    Console.WriteLine("----------------- Excluir time -----------------");
+    Console.Write("Insira o id do time a ser excluido: ");
+    int id = int.Parse(Console.ReadLine());
+    string nome = "";
+    Time obj = new Time(id , nome);
+    Console.Write("Insira o nome do jogador a ser excluído: ");
+    string nomejog = Console.ReadLine();
+    Jogador obj = new Jogador(nomejog, camisa , email , time);
+    Campeonato.excluirTime(obj);
+    Console.WriteLine("Time excluído com sucesso!");
+    Console.WriteLine("------------------------------------------------");
+  }
+  
+// PARTE DOS JOGADORES //
   
   public static void menuinserirJogador() {
     Console.WriteLine("---------------- Inserir jogador ---------------");
     Console.Write("Insira o time que gostaria de inserir este jogador: ");
     string timeInserirJog = Console.ReadLine();
-
-    // TESTAR AQUI SE O TIME FOI DIGITADO CORRETAMENTE, SE NÃO, VOLTE PARA O MENU PRINCIPAL
-    
+    // TESTAR AQUI SE O TIME FOI DIGITADO CORRETAMENTE, SE NÃO, VOLTE PARA O MENU PRINCIPAL//
     Console.Write("Insira o nome do jogador: ");
     string nomeInserirJog = Console.ReadLine();
     Console.Write("Insira o número da camisa do jogador: ");
@@ -119,7 +131,7 @@ class Program {
     Console.WriteLine("------------------------------------------------");
     Console.WriteLine();
   }
-
+  //  Listar todos os jogadores //
   public static void menulistarJogador() {
     Console.WriteLine("---------------- Listar todos os jogadores ---------------");
     foreach(Jogador obj in Campeonato.listarJogador())
@@ -127,11 +139,28 @@ class Program {
     Console.WriteLine("------------------------------------------------");
     Console.WriteLine();
   }
-  
+  // Listar jogadores por time //
   public static void menulistarJogTime() {
     Console.WriteLine("----------- Listar jogadores por time ----------");
     Console.WriteLine("Insira o nome do time do qual deseja listar os jogadores: ");
     Campeonato.listarJogador(Console.ReadLine());
+    Console.WriteLine("------------------------------------------------");
+    Console.WriteLine();
+  }
+} 
+  // Atualizar jogadores //
+  public static void menuatualizarJogadores() {
+    Console.WriteLine("----------- Excluir jogadores ------------------");
+    Console.WriteLine("Insira o id do time do jogador a ser atualizado: ");
+    Campeonato.atualizarJogador(Console.ReadLine());
+    Console.WriteLine("------------------------------------------------");
+    Console.WriteLine();
+  }
+  // Excluir jogadores //
+  public static void menuexcluirJogadores() {
+    Console.WriteLine("----------- Excluir jogadores ------------------");
+    Console.WriteLine("Insira o id do time do qual deseja excluir um jogador: ");
+    
     Console.WriteLine("------------------------------------------------");
     Console.WriteLine();
   }
