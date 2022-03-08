@@ -4,7 +4,6 @@ using System.Collections.Generic;
 class Time {
   private int id;
   private string nome;
-  //private static List<Jogador> jogs = new List<Jogador>();//
   public Time(int id , string nome){
     this.id = id;
     this.nome = nome;
@@ -20,6 +19,7 @@ class Time {
   }
   public int getId(){
     return this.id;
+    
   }
   public override string ToString(){
     return $"{id} - {nome}";

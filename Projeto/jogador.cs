@@ -2,40 +2,50 @@ using System;
 using System.Collections.Generic;
 
 class Jogador {
+  private int id;
   private string nome;
   private int camisa;
   private string email;
-  private string Idtime;
-  public Jogador(int id){
+  private string time;
+  public Jogador (int id){
     this.id = id;
   }
-  public Jogador (int IdJog , string nome, int camisa , string email, int IdTime){
-    this.IdJog = IdJog;
+  public Jogador (int id , string nome, int camisa , string email, string time){
+    this.id = id;
     this.nome = nome;
     this.camisa = camisa;
     this.email = email;
-    this.Idtime = Idtime;
+    this.time = time;
   }
-  public void setIdJog(int id){
+  public void setId(int id){
     this.id = id;
   }
-  public int getIdJog(){
-    return this.id;
+  public int getId(){
+    return id;
   }
-  public void SetCamisa(int camisa){
-    if(camisa > 0) this.camisa = camisa;
+  public void SetNome(string nome){
+    this.nome = nome;
   }
   public string GetNome(){
     return nome;
   }
+  public void SetCamisa(int camisa){
+    if(camisa > 0) this.camisa = camisa;
+  }
   public int GetCamisa(){
     return camisa;
+  }
+  public void SetEmail(string email){
+    this.email = email;
   }
   public string GetEmail(){
     return email;
   }
-  public int getIdTime(){
-    return Idtime;
+  public void setTime(string time){
+    this.time = time;
+  }
+  public string getTime(){
+    return time;
   }
   public override string ToString(){
     return $"{nome} - {camisa} - {email} - {time}";

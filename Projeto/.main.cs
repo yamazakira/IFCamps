@@ -41,11 +41,11 @@ class Program {
     Console.WriteLine("02 Listar times");
     Console.WriteLine("03 Atualizar um time");
     Console.WriteLine("04 Excluir um time");
-    Console.WriteLine("05 Inserir um jogador");
-    Console.WriteLine("06 Listar todos os jogadores");
-    Console.WriteLine("07 Listar jogadores por time");
-    Console.WriteLine("08 Atualizar jogadores");
-    Console.WriteLine("09 Excluir jogadores");
+    Console.WriteLine("05 Inserir jogadores(as)");
+    Console.WriteLine("06 Listar todos os jogadores(as)");
+    Console.WriteLine("07 Listar jogadores(a) por time");
+    Console.WriteLine("08 Atualizar jogadores(a)");
+    Console.WriteLine("09 Excluir jogadores(a)");
     Console.WriteLine("00 Finalizar o sistema");
     Console.WriteLine("------------------------------------------------");
     Console.Write("Opção: ");
@@ -86,7 +86,6 @@ class Program {
     string nomeNovo = Console.ReadLine();
     Time obj = new Time(id, nomeNovo);
     Campeonato.atualizarTime(obj);
-    Console.WriteLine("Time atualizado com sucesso!");
     Console.WriteLine("------------------------------------------------");
     Console.WriteLine();
   }
@@ -107,26 +106,26 @@ class Program {
   // Inserir um jogador(a) //
   public static void menuinserirJogador() {
     Console.WriteLine("---------------- Inserir jogador ---------------");
-    Console.Write("Informe o id do jogador");
-    int id = int.Parse(Console.ReadLine());
-    Console.Write("Informe o id do Time ");
-    int idTime = int.Parse(Console.ReadLine());
-    int novoId = int.Parse(Console.ReadLine());
+    Campeonato.listarTime();
+    Console.Write("Informe o time do jogador: ");
+    string timeJog = Console.ReadLine();
     Console.Write("Quantos jogadores(as) deseja inserir? ");
     for (int i = int.Parse(Console.ReadLine()); i > 0; i--){
       Console.Write("Insira o nome do novo(a) jogador(a): ");
       string nomeNovoJog = Console.ReadLine();
+      Console.Write("Informe o id do novo(a) jogador(a)");
+      int novoId = int.Parse(Console.ReadLine());
       Console.Write("Insira a camisa do novo(a) jogador(a): ");
       int camisaNovoJog = int.Parse(Console.ReadLine());
       Console.Write("Insira o email do novo(a) jogador(a): ");
       string emailNovoJog = Console.ReadLine();
-      Jogador jog = new Jogador(novoid , nomeNovoJog, camisaNovoJog, emailNovoJog, nome , novoIdTime);
-      Campeonato.inserirJogador(jog);
-    Console.WriteLine("Jogador inserido com sucesso!");
-    Console.WriteLine("------------------------------------------------");
-    Console.WriteLine();
+      Jogador obj = new Jogador(novoId , nomeNovoJog, camisaNovoJog, emailNovoJog, timeJog);
+      Campeonato.inserirJogador(obj);
+      Console.WriteLine("Jogador inserido com sucesso!");
+      Console.WriteLine("------------------------------------------------");
+      Console.WriteLine();
+    }
   }
-}
   //  Listar todos os jogadores //
   public static void menulistarJogador() {
     Console.WriteLine("----------- Listar todos os jogadores ----------");
@@ -139,15 +138,26 @@ class Program {
   public static void menulistarJogTime() {
     Console.WriteLine("----------- Listar jogadores por time ----------");
     Console.WriteLine("Insira o id do time do qual deseja listar os jogadores: ");
-    Campeonato.listarJogador(Console.ReadLine());
+    Campeonato.listarJogador(int.Parse(Console.ReadLine()));
     Console.WriteLine("------------------------------------------------");
     Console.WriteLine();
   }
   // Atualizar jogadores //
   public static void menuatualizarJogadores() {
-    Console.WriteLine("----------- Excluir jogadores ------------------");
-    Console.WriteLine("Insira o id do jogador a ser atualizado: ");
-    Campeonato.atualizarJogador(Console.ReadLine());
+    Console.WriteLine("----------- Atualizar jogadores ------------------");
+    Console.WriteLine("Se não houver mudança em algum dos itens abaixo informe o item inserido anteriormente na operação inserir jogadores(as)");
+    Console.WriteLine("Insira o id do jogador(a) a ser atualizado(a): ");
+    int id = int.Parse(Console.ReadLine());
+    Console.WriteLine("Insira o novo nome do jogador(a) : ");
+    string nomeNovo = Console.ReadLine();
+    Console.WriteLine("Insira a nova camisa do jogador(a): ");
+    int camisaNova = int.Parse(Console.ReadLine());
+    Console.WriteLine("Insira o novo email do jogador(a): ");
+    string emailNovo = Console.ReadLine();
+    Console.WriteLine("Insira o novo time do jogador(a): ");
+    string timeNovo = Console.ReadLine();
+    /*Jogador obj = new Jogador(id , nomeNovo, camisaNova, emailNovo, timeNovo);*/
+    Campeonato.atualizarJogador(id, nomeNovo, camisaNova, emailNovo, timeNovo);
     Console.WriteLine("------------------------------------------------");
     Console.WriteLine();
   }
@@ -156,9 +166,9 @@ class Program {
     Console.WriteLine("----------- Excluir jogadores ------------------");
     Console.Write("Insira o id do jogador a ser excluído: ");
     int idjog = int.Parse(Console.ReadLine());
-    Jogador obj = new Jogador(idjog);
-    Campeonato.excluirJogador(obj);
-    Console.WriteLine("Jogador excluído com sucesso!");
+
+    Campeonato.excluirJogador(idjog);
+    Console.WriteLine("foi excluído(a) com sucesso!");
     Console.WriteLine("------------------------------------------------");
     Console.WriteLine();
   }
