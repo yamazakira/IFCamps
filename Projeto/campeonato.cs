@@ -34,16 +34,16 @@ class Campeonato {
   public static Time listarTime(int id){
     // percorre o vetor //
     foreach(Time obj in times)
-      if(obj != null && obj.getId() == id) return obj;
+      if(obj != null && obj.GetId() == id) return obj;
     return null;
   }
   // Atualiza os times //
   public static void atualizarTime(Time obj){
     // localiza o time com o nome informado //
-    Time aux = listarTime(obj.getId());
+    Time aux = listarTime(obj.GetId());
     // atualiza o nome do time //
     if(aux != null) {
-      aux.setId(obj.getId());
+      aux.SetId(obj.GetId());
       aux.setNomeTime(obj.getNomeTime());
       Console.WriteLine("Time atualizado com sucesso!");
     }
@@ -53,7 +53,7 @@ class Campeonato {
   }
   // Remove um time do campeonato //
   public static void excluirTime(Time obj) {
-    int aux = indiceTime(obj.getId());
+    int aux = indiceTime(obj.GetId());
     if(aux != -1){
       for(int i = aux ; i < numTimes - 1 ; i++)
         times[i] = times[i + 1];
@@ -67,7 +67,7 @@ class Campeonato {
   public static int indiceTime(int id){
     for (int i = 0; i < numTimes ; i++){
       Time obj = times[i];
-      if(obj.getId() == id) return i; 
+      if(obj.GetId() == id) return i; 
     }
     return -1 ; 
   }
@@ -86,27 +86,33 @@ class Campeonato {
   }
   // Lista os jogadores cadastrados por time //
   public static Jogador listarJogador(int id){
-    foreach(Jogador obj in jogs) {   
-      if (obj.getId() == id) Console.WriteLine(obj); 
+    foreach(Jogador obj in jogs){
+      if(obj.getId() == id) return obj; 
     }
-    return null;
+    return null;  
   }
+  
   // Atualiza um jogador //
-  public static void atualizarJogador(int id, string nome, int camisa, string email, string time) {
-
-    foreach(Jogador obj in jogs)
-      if(obj.getId() == id){
-        obj.SetNome(nome);
-        obj.SetCamisa(camisa);
-        obj.SetEmail(email);
-        obj.setTime(time);
-      }
-    }  
+  public static void atualizarJogador(Jogador obj) {
+    Jogador aux = listarJogador(obj.getId());
+    if(aux != null) {
+      aux.SetNome(obj.GetNome());
+      aux.SetCamisa(obj.GetCamisa());
+      aux.SetEmail(obj.GetEmail());
+      aux.setTime(obj.getTime());
+      Console.WriteLine("Jogador(a) atualizado(a) com sucesso !");
+    }
+  }
   //exclui um jogador//
   public static void excluirJogador(int id) {
-    foreach(Jogador obj in jogs)
+    foreach(Jogador obj in jogs){
       if(obj.getId() == id){
         jogs.Remove(obj);
+        Console.WriteLine("Jogador(a) excluído(a) com sucesso!");
       }
+      if(obj.getId() != id){
+        Console.WriteLine("Ops! o jogador citado não existe");
+      }
+    }
   }
 }

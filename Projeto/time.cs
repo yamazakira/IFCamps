@@ -14,12 +14,11 @@ class Time {
   public string getNomeTime(){
     return this.nome;
   }
-  public void setId(int id){
+  public void SetId(int id){
     this.id = id;
   }
-  public int getId(){
-    return this.id;
-    
+  public int GetId(){
+    return id;
   }
   public override string ToString(){
     return $"{id} - {nome}";
