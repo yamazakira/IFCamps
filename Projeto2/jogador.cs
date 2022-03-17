@@ -7,47 +7,52 @@ class Jogador {
   private int camisa;
   private string email;
   private string time;
-  public Jogador (int id){
-    this.id = id;
-  }
-  public Jogador (int id , string nome, int camisa , string email, string time){
+  
+  public Jogador(int id , string nome, int camisa, string email, string time){
     this.id = id;
     this.nome = nome;
     this.camisa = camisa;
     this.email = email;
     this.time = time;
+    //this.idCampeonato = idcamp;
   }
-  public void setId(int id){
+
+  public Jogador(int id) {
     this.id = id;
-  }
-  public int getId(){
-    return id;
   }
   public void SetNome(string nome){
     this.nome = nome;
   }
   public string GetNome(){
-    return nome;
+    return this.nome;
+  }
+  public void SetId(int id){
+    this.id = id;
+  }
+  public int GetId(){
+    return id;
   }
   public void SetCamisa(int camisa){
-    if(camisa > 0) this.camisa = camisa;
+    this.camisa = camisa;
   }
   public int GetCamisa(){
     return camisa;
   }
+  public void SetTime(string time){
+    this.time = time;
+  }
+  public string GetTime(){
+    return this.time;
+  }
   public void SetEmail(string email){
     this.email = email;
   }
+    
   public string GetEmail(){
-    return email;
+    return this.email;
   }
-  public void setTime(string time){
-    this.time = time;
-  }
-  public string getTime(){
-    return time;
-  }
+
   public override string ToString(){
-    return $"{nome} - {camisa} - {email} - {time}";
+    return $"{id} -- {nome} - {camisa} - {email} - {time}";
   }
 }
