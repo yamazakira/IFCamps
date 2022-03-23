@@ -1,45 +1,24 @@
 using System;
 using System.Collections.Generic;
 
-public class Jogador : IComparable {
+class Jogador {
   private int id;
   private string nome;
   private int camisa;
   private string email;
   private string time;
-  private int idcamp;
-
-  public int Id{
-    get => id;
-    set => id = value;
-  }
-  public string Nome{
-    get => nome;
-    set => nome = value;
-  } 
-  public int IdCamp{
-    get => idcamp;
-    set => idcamp = value;
-  }
-
-  public Jogador(){
-  }
   
-  public Jogador(int id , string nome, int camisa, string email, string time, int idcamp){
+  public Jogador(int id , string nome, int camisa, string email, string time){
     this.id = id;
     this.nome = nome;
     this.camisa = camisa;
     this.email = email;
     this.time = time;
-    this.idcamp = idcamp;
+    //this.idCampeonato = idcamp;
   }
 
   public Jogador(int id) {
     this.id = id;
-  }
-  public int CompareTo(object obj){
-    Jogador x = (Jogador) obj;
-    return this.nome.CompareTo(x.nome);
   }
   public void SetNome(string nome){
     this.nome = nome;

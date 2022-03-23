@@ -1,14 +1,35 @@
 using System;
 using System.Collections.Generic;
 
-class Time {
+public class Time : IComparable{
   private int id;
   private string nome;
-  //private int idCampeonato;
-  public Time(int id , string nome/*, int idcamp*/){
+  private int idcamp;
+  
+  public int Id{
+    get => id;
+    set => id = value;
+  }
+  public string Nome{
+    get => nome;
+    set => nome = value;
+  } 
+  public int IdCamp{
+    get => idcamp;
+    set => idcamp = value;
+  }
+
+  public Time(){
+  }
+  
+  public Time(int id , string nome, int idcamp){
     this.id = id;
     this.nome = nome;
-    //this.idCampeonato = idcamp;
+    this.idcamp = idcamp;
+  }
+  public int CompareTo(object obj){
+    Time x = (Time) obj;
+    return this.nome.CompareTo(x.nome);
   }
   public void SetNome(string nome){
     this.nome = nome;
@@ -22,12 +43,12 @@ class Time {
   public int GetId(){
     return id;
   }
-  /*public void setIdCamp(int idcamp){
-    this.idCampeonato = idcamp;
+  public void SetIdCamp(int idcamp){
+    this.idcamp = idcamp;
   }
-  public int getIdCamp(){
-    return this.idCampeonato;
-  }*/
+  public int GetIdCamp(){
+    return this.idcamp;
+  }
   public override string ToString(){
     return $"{id} - {nome}";
   }
