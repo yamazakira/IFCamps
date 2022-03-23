@@ -10,6 +10,6 @@ public class Campeonato : IComparable {
     return this.nome.CompareTo(x.nome);
   }
   public override string ToString() {
-    return $"{id} - {nome}";
+    return $"{id}: {nome}";
   }
 }

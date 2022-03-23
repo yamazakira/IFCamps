@@ -1,15 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCampeonato xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Campeonato>
-    <id>1</id>
-    <nome>1</nome>
-  </Campeonato>
-  <Campeonato>
     <id>2</id>
     <nome>1</nome>
   </Campeonato>
   <Campeonato>
     <id>3</id>
-    <nome>1</nome>
+    <nome>33123</nome>
   </Campeonato>
 </ArrayOfCampeonato>

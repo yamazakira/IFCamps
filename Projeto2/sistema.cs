@@ -7,7 +7,7 @@ using System.Text;
 class Sistema {
   private static Time[] times = new Time[8];
   private static int nTimes;
-  private static List<Jogador> jogs = new List<Jogador>();
+  public static List<Jogador> jogs = new List<Jogador>();
   private static List<Campeonato> camps = new List<Campeonato>();
 
   // ARQUIVOS
@@ -22,11 +22,6 @@ class Sistema {
 
     Arquivo<List<Campeonato>> f3 = new Arquivo<List<Campeonato>>();
     camps = f3.Abrir("./campeonatos.xml");
-    /*
-    StreamReader f = new StreamReader("./times.xml", Encoding.Default);
-    times = (Time[]) xml.Deserialize(f);
-    nTimes = times.Length;
-    f.Close();*/
   }
   public static void ArquivosSalvar() {
     Arquivo<Time[]> f1 = new Arquivo<Time[]>();
@@ -37,11 +32,6 @@ class Sistema {
 
     Arquivo<List<Campeonato>> f3 = new Arquivo<List<Campeonato>>();
     f3.Salvar("./campeonatos.xml", camps);
-    /*
-    XmlSerializer xml = new XmlSerializer(typeof(Time[]));
-    StreamWriter f = new StreamWriter("./times.xml", false, Encoding.Default);
-    xml.Serialize(f, TimeListar());
-    f.Close();*/
   }
   
   //CAMPEONATOS
@@ -57,6 +47,7 @@ class Sistema {
     camps.Add(obj);
   }
   // Lista os campeonatos
+  // LISTAR SÓ O CAMPEONATO ATUAL
   public static List<Campeonato> CampListar() {
     camps.Sort();
     return camps;
@@ -85,11 +76,12 @@ class Sistema {
   public static void TimeInserir(Time obj){
     if (nTimes == times.Length)
       Array.Resize(ref times, 2+times.Length);
-    times[nTimes] = obj;
-    /*int id = 0;
+    
+    int id = 0;
     foreach(Time aux in times)
-      if(aux.id > id) id = aux.id;
-    obj.id = id+1;*/
+      if(aux != null && aux.GetId() > id) id = aux.GetId();
+    obj.SetId(id+1);
+    times[nTimes] = obj;
     nTimes++;
   }
   // Lista os times
@@ -131,10 +123,14 @@ class Sistema {
 
   // Insere um jogador 
   public static void JogadorInserir(Jogador obj){
-    
+    int id = 0;
+    foreach(Jogador aux in jogs)
+      if(aux != null && aux.GetId() > id) id = aux.GetId();
+    obj.SetId(id+1);
     jogs.Add(obj);
   }
   // Lista os jogadores
+  // AJUSTAR PRA SÓ LISTAR OS JOGADORES DO CAMPEONATO ATUAL
   public static List<Jogador> JogadorListar(){
     jogs.Sort();
     return jogs;
@@ -151,7 +147,7 @@ class Sistema {
       aux.SetNome(obj.GetNome());
       aux.SetCamisa(obj.GetCamisa());
       aux.SetEmail(obj.GetEmail());
-      aux.SetTime(obj.GetTime());
+      aux.SetIdTime(obj.GetIdTime());
   }
   // Exclui um jogador
   public static void JogadorExcluir(Jogador obj){

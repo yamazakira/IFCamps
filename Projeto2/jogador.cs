@@ -6,7 +6,7 @@ public class Jogador : IComparable {
   private string nome;
   private int camisa;
   private string email;
-  private string time;
+  private int idtime;
   private int idcamp;
 
   public int Id{
@@ -25,12 +25,12 @@ public class Jogador : IComparable {
   public Jogador(){
   }
   
-  public Jogador(int id , string nome, int camisa, string email, string time, int idcamp){
+  public Jogador(int id , string nome, int camisa, string email, int idtime, int idcamp){
     this.id = id;
     this.nome = nome;
     this.camisa = camisa;
     this.email = email;
-    this.time = time;
+    this.idtime = idtime;
     this.idcamp = idcamp;
   }
 
@@ -59,11 +59,11 @@ public class Jogador : IComparable {
   public int GetCamisa(){
     return camisa;
   }
-  public void SetTime(string time){
-    this.time = time;
+  public void SetIdTime(int idtime){
+    this.idtime = idtime;
   }
-  public string GetTime(){
-    return this.time;
+  public int GetIdTime(){
+    return this.idtime;
   }
   public void SetEmail(string email){
     this.email = email;
@@ -72,8 +72,13 @@ public class Jogador : IComparable {
   public string GetEmail(){
     return this.email;
   }
-
+  public void SetIdCamp(int idcamp){
+    this.idcamp = idcamp;
+  }
+  public int GetIdCamp(){
+    return this.idcamp;
+  }
   public override string ToString(){
-    return $"{id} -- {nome} - {camisa} - {email} - {time}";
+    return $"{id}: {nome} - {camisa} - {email} - ID do time: {idtime}";
   }
 }

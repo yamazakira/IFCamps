@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfTime xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Time>
-    <Id>2</Id>
-    <Nome>Time dois</Nome>
-    <IdCamp>1</IdCamp>
+    <Id>1</Id>
+    <Nome>Cu</Nome>
+    <IdCamp>3</IdCamp>
   </Time>
   <Time>
-    <Id>1</Id>
-    <Nome>time um</Nome>
-    <IdCamp>1</IdCamp>
+    <Id>2</Id>
+    <Nome>Haha</Nome>
+    <IdCamp>3</IdCamp>
   </Time>
 </ArrayOfTime>

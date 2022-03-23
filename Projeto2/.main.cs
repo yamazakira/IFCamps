@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
+
 class Program {
-  public static int idTimes = 1;
-  public static int idJogs = 1;
-  public static int idcamp = 1;
+  public static int idcamp;
   public static int opC;
   
   public static void Main(string[] args) {
@@ -172,12 +171,28 @@ class Program {
   // Exclui um campeonato
   //VERIFICAR SE O CAMP EXISTE
   public static void CampExcluir() {
-    Console.WriteLine("Excluir campeonato ");
+    Console.WriteLine("Excluir campeonato");
+    Console.WriteLine();
+    Console.WriteLine("Isso irá excluir também todos os times e jogadores participantes do campeonato escolhido. Você deve estar administrando outro campeonato para executar essa ação.");
     Console.WriteLine();
     CampListar();
     Console.Write("Insira o ID do campeonato que deseja excluir: ");
     int eid = int.Parse(Console.ReadLine());
     Campeonato obj = new Campeonato {id = eid};
+    
+    // Excluir times deste campeonato
+    foreach(Time aux in Sistema.TimeListar()){
+      if(aux.GetIdCamp() == eid) {
+        Time exc1 = new Time(aux.GetId(), "", eid);
+        Sistema.TimeExcluir(exc1);
+      }
+    }
+    
+    // Excluir jogadores deste campeonato
+    for(int i = Sistema.jogs.Count - 1; i >= 0; i--) {
+      if(Sistema.jogs[i].GetIdCamp() == eid) Sistema.jogs.Remove(Sistema.jogs[i]);
+    }
+    
     Sistema.CampExcluir(obj);
     Console.WriteLine("Sucesso!");
     Console.WriteLine("--------------------------------------------");
@@ -190,8 +205,7 @@ class Program {
     Console.WriteLine("------------ Inserir novo time -------------");
     Console.WriteLine();
     Console.Write("Informe o nome do time: ");
-    Time obj = new Time(Program.idTimes, Console.ReadLine(), idcamp);
-    idTimes++;
+    Time obj = new Time(0, Console.ReadLine(), idcamp);
     Sistema.TimeInserir(obj);
     Console.WriteLine("Sucesso!");
     Console.WriteLine("--------------------------------------------");
@@ -245,6 +259,7 @@ class Program {
   // Insere um jogador
   // VERIFICAR SE TÁ INSERINDO JOG EM UM TIME Q N EXISTE
   public static void JogadorInserir(){
+    bool IdExiste = false;
     Console.WriteLine("Inserir novo jogador ");
     Console.WriteLine();
     Console.Write("Informe o nome do jogador: ");
@@ -257,10 +272,20 @@ class Program {
     foreach(Time t in Sistema.TimeListar()) Console.WriteLine(t);
     Console.Write("Para finalizar, informe ID do time do jogador: ");
     try {
-      Jogador obj = new Jogador(idJogs, nome, camisa, email, Sistema.TimeNPID(int.Parse(Console.ReadLine())), idcamp);
-      Sistema.JogadorInserir(obj);
-      idJogs++;
-      Console.WriteLine("Sucesso!");
+      int idtime = int.Parse(Console.ReadLine());
+      foreach(Time aux in Sistema.TimeListar()) {
+        if(aux.GetId() == idtime) {
+          IdExiste = true;
+        }
+      }
+      if(IdExiste == true) {
+        Jogador obj = new Jogador(0, nome, camisa, email, idtime, idcamp);
+        Sistema.JogadorInserir(obj);
+        Console.WriteLine("Sucesso!");
+      }
+      else {
+        Console.WriteLine("Opa! Não existe um time com esse ID!");
+      }
       Console.WriteLine("--------------------------------------------");
     }
     catch (NullReferenceException){
@@ -272,13 +297,14 @@ class Program {
     Console.WriteLine();
     Console.WriteLine("Listar jogadores ");
     foreach(Jogador obj in Sistema.JogadorListar())
-      Console.WriteLine(obj);
+      if(obj.GetIdCamp() == idcamp)
+        Console.WriteLine(obj);
     Console.WriteLine("--------------------------------------------");
   }
   // Atualiza um jogador
   // VERIFICAR SE O JOGADOR EXISTE
   public static void JogadorAtualizar(){
-    string timenome = null;
+    int timeid = 0;
     Console.WriteLine();
     Console.WriteLine(" Atualizar jogador ");
     Console.WriteLine();
@@ -292,9 +318,9 @@ class Program {
     Console.Write("Insira o novo email deste jogador: ");
     string email = Console.ReadLine();
     foreach(Jogador obj in Sistema.JogadorListar()){
-      if(obj.GetId() == id) timenome = obj.GetTime();
+      if(obj.GetId() == id) timeid = obj.GetIdTime();
     }
-    Jogador jog = new Jogador(id, nome, camisa, email, timenome, idcamp);
+    Jogador jog = new Jogador(id, nome, camisa, email, timeid, idcamp);
     Sistema.JogadorAtualizar(jog);
     Console.WriteLine("Sucesso!");
     Console.WriteLine("--------------------------------------------");

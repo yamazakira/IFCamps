@@ -50,6 +50,6 @@ public class Time : IComparable{
     return this.idcamp;
   }
   public override string ToString(){
-    return $"{id} - {nome}";
+    return $"{id}: {nome}";
   }
 }

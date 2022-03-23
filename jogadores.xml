@@ -1,8 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfJogador xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Jogador>
+    <Id>3</Id>
+    <Nome>123123</Nome>
+    <IdCamp>3</IdCamp>
+  </Jogador>
+  <Jogador>
+    <Id>4</Id>
+    <Nome>Copa</Nome>
+    <IdCamp>3</IdCamp>
+  </Jogador>
+  <Jogador>
     <Id>1</Id>
-    <Nome>1</Nome>
-    <IdCamp>1</IdCamp>
+    <Nome>Po</Nome>
+    <IdCamp>3</IdCamp>
+  </Jogador>
+  <Jogador>
+    <Id>2</Id>
+    <Nome>popo</Nome>
+    <IdCamp>3</IdCamp>
   </Jogador>
 </ArrayOfJogador>
