@@ -1,23 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfJogador xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Jogador>
-    <Id>3</Id>
-    <Nome>123123</Nome>
-    <IdCamp>3</IdCamp>
-  </Jogador>
-  <Jogador>
     <Id>4</Id>
-    <Nome>Copa</Nome>
-    <IdCamp>3</IdCamp>
+    <Nome>Iago</Nome>
+    <IdCamp>9</IdCamp>
+    <Camisa>9</Camisa>
+    <Email>email</Email>
+    <IdTime>0</IdTime>
   </Jogador>
   <Jogador>
-    <Id>1</Id>
-    <Nome>Po</Nome>
-    <IdCamp>3</IdCamp>
+    <Id>5</Id>
+    <Nome>L.Messi</Nome>
+    <IdCamp>5</IdCamp>
+    <Camisa>10</Camisa>
+    <Email>messi10@argmail.com</Email>
+    <IdTime>62</IdTime>
   </Jogador>
   <Jogador>
     <Id>2</Id>
-    <Nome>popo</Nome>
-    <IdCamp>3</IdCamp>
+    <Nome>Mbappé</Nome>
+    <IdCamp>5</IdCamp>
+    <Camisa>7</Camisa>
+    <Email>mbappe7@frmail.com</Email>
+    <IdTime>58</IdTime>
+  </Jogador>
+  <Jogador>
+    <Id>1</Id>
+    <Nome>Neymar Jr</Nome>
+    <IdCamp>5</IdCamp>
+    <Camisa>10</Camisa>
+    <Email>neyjr10@brmail.com</Email>
+    <IdTime>56</IdTime>
   </Jogador>
 </ArrayOfJogador>

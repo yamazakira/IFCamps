@@ -8,7 +8,7 @@ class Sistema {
   private static Time[] times = new Time[8];
   private static int nTimes;
   public static List<Jogador> jogs = new List<Jogador>();
-  private static List<Campeonato> camps = new List<Campeonato>();
+  public static List<Campeonato> camps = new List<Campeonato>();
 
   // ARQUIVOS
   

@@ -1,11 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCampeonato xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Campeonato>
-    <id>2</id>
-    <nome>1</nome>
+    <id>10</id>
+    <nome>Camp</nome>
   </Campeonato>
   <Campeonato>
-    <id>3</id>
-    <nome>33123</nome>
+    <id>7</id>
+    <nome>Champions League</nome>
+  </Campeonato>
+  <Campeonato>
+    <id>5</id>
+    <nome>Copa do Mundo FIFA QATAR 2022</nome>
+  </Campeonato>
+  <Campeonato>
+    <id>9</id>
+    <nome>Jogos Internos do IFRN-CNAT</nome>
+  </Campeonato>
+  <Campeonato>
+    <id>6</id>
+    <nome>Libertadores</nome>
   </Campeonato>
 </ArrayOfCampeonato>

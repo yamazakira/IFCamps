@@ -22,6 +22,19 @@ public class Jogador : IComparable {
     set => idcamp = value;
   }
 
+  public int Camisa{
+    get => camisa;
+    set => camisa = value;
+  }
+  public string Email{
+    get => email;
+    set => email = value;
+  } 
+  public int IdTime{
+    get => idtime;
+    set => idtime = value;
+  }
+
   public Jogador(){
   }
   
