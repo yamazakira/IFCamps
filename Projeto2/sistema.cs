@@ -154,12 +154,4 @@ class Sistema {
     Jogador aux = JogadorListar(obj.GetId());
     if(aux != null) jogs.Remove(aux);
   }
-
-  //nome por id - times
-  public static string TimeNPID(int id) {
-    foreach(Time obj in times) {
-      if(obj.GetId() == id) return obj.GetNome();
-    }
-    return null;
-  }
 }
